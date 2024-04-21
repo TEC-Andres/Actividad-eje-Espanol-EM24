@@ -1,0 +1,154 @@
+#spawn {
+    position: absolute;
+    width: 50px;
+    height: 50px;
+    background-color: #A9A9A9;
+    bottom: 200px;
+    left: 50px; 
+}
+
+#game-container {
+    position: relative;
+    width: 1000px;
+    height: 600px;
+    background-color: #f0f0f0;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, 0%)
+}
+
+#jugador {
+    position: absolute;
+    width: 48px;
+    height: 48px;
+    background-color: #c4c7c6;
+    border: 2px solid black;
+    bottom: 200px;
+    left: 50px; 
+}
+
+#teletransportador {
+    position: absolute;
+    width: 50px;
+    height: 20px;
+    background-color: yellow;
+    bottom: 530px;
+    left: 195px;
+}
+
+#obstacle {
+    position: absolute;
+    width: 300px;
+    height: 200px;
+    background-color: red;
+    bottom: 0px;
+    left: 0px;
+}
+
+#obstacle2 {
+    position: absolute;
+    width: 30px;
+    height: 30px;
+    background-color: red;
+    bottom: 75px;
+    left: 300px;
+}
+
+#obstacle3 {
+    position: absolute;
+    width: 150px;
+    height: 20px;
+    background-color: red;
+    bottom: 250px;
+    left: 500px;
+}
+
+#obstacle4 {
+    position: absolute;
+    width: 20px;
+    height: 200px;
+    background-color: red;
+    bottom: 50px;
+    left: 565px;
+}
+
+#obstacle5 {
+    position: absolute;
+    width: 250px;
+    height: 350px;
+    background-color: red;
+    bottom: 0px;
+    left: 750px;
+}
+
+#obstacle6 {
+    position: absolute;
+    width: 650px;
+    height: 20px;
+    background-color: red;
+    bottom: 430px;
+    left: 175px;
+}
+
+#obstacle7 {
+    position: absolute;
+    width: 20px;
+    height: 100px;
+    background-color: red;
+    bottom: 450px;
+    left: 175px;
+}
+
+#hint {
+    position: absolute;
+    width: 20px;
+    height: 50px;
+    background-color: #444444;
+    bottom: 0px;
+    left: 565px;
+}
+
+#hint2 {
+    position: absolute;
+    width: 20px;
+    height: 100px;
+    background-color: #444444;
+    bottom: 450px;
+    left: 775px;
+}
+
+#hint3 {
+    position: absolute;
+    width: 20px;
+    height: 100px;
+    background-color: #444444;
+    bottom: 450px;
+    left: 625px;
+}
+
+#hint4 {
+    position: absolute;
+    width: 20px;
+    height: 100px;
+    background-color: #444444;
+    bottom: 450px;
+    left: 475px;
+}
+
+#hint5 {
+    position: absolute;
+    width: 20px;
+    height: 100px;
+    background-color: #444444;
+    bottom: 450px;
+    left: 325px;
+}
+
+#npc {
+    position: absolute;
+    width: 50px;
+    height: 50px;
+    background-color: rgb(187, 255, 0);
+    bottom: 0px; /* Adjust position as needed */
+    left: 350px; /* Adjust position as needed */
+}

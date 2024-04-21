@@ -1,0 +1,128 @@
+#spawn {
+    position: absolute;
+    width: 50px;
+    height: 50px;
+    background-color: #A9A9A9;
+    bottom: 0;
+    left: 50px; 
+}
+
+#jugador {
+    position: absolute;
+    width: 48px;
+    height: 48px;
+    background-color: #c4c7c6;
+    border: 2px solid black;
+    bottom: 0px;
+    left: 50px; 
+}
+
+#teletransportador {
+    position: absolute;
+    width: 50px;
+    height: 50px;
+    background-color: yellow;
+    bottom: 475px;
+    left: 950px;
+}
+
+#obstacle {
+    position: absolute;
+    width: 15px;
+    height: 15px;
+    background-color: red;
+    bottom: 400px;
+    left: 700px;
+}
+
+#obstacle2 { 
+    position: absolute;
+    width: 100px;
+    height: 20px;
+    background-color: red;
+    bottom: 90px;
+    left: 250px;
+}
+
+#obstacle5 { 
+    position: absolute;
+    width: 50px;
+    height: 72px;
+    background-color: red;
+    bottom: 190px;
+    left: 330px;
+}
+
+#obstacle7 { 
+    position: absolute;
+    width: 70px;
+    height: 140px;
+    background-color: red;
+    bottom: 310px;
+    left: 320px;
+}
+
+#game-container {
+    position: relative;
+    width: 1000px;
+    height: 600px;
+    background-color: #f0f0f0;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, 0%)
+}
+
+#obstacle3 { 
+    position: absolute;
+    width: 100px;
+    height: 20px;
+    background-color: red;
+    bottom: 110px;
+    left: 450px;
+}
+
+#obstacle4 { 
+    position: absolute;
+    width: 100px;
+    height: 20px;
+    background-color: red;
+    bottom: 170px;
+    left: 750px;
+}
+
+#obstacle6 { 
+    position: absolute;
+    width: 40px;
+    height: 20px;
+    background-color: red;
+    bottom: 230px;
+    left: 600px;
+}
+
+
+#obstacle8 { 
+    position: absolute;
+    width: 60px;
+    height: 20px;
+    background-color: red;
+    bottom: 330px;
+    left: 130px;
+}
+
+#obstacle9 {
+    position: absolute;
+    width: 100px;
+    height: 15px;
+    background-color: red;
+    bottom: 460px;
+    left: 900px;
+}
+
+#npc {
+    position: absolute;
+    width: 50px;
+    height: 50px;
+    background-color: green;
+    bottom: 0px; /* Adjust position as needed */
+    left: 200px; /* Adjust position as needed */
+}

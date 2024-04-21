@@ -1,0 +1,76 @@
+#spawn {
+    position: absolute;
+    width: 100px;
+    height: 20px;
+    background-color: #A9A9A9;
+    bottom: 530px;
+    left: 900px; 
+}
+
+#game-container {
+    position: relative;
+    width: 1000px;
+    height: 600px;
+    background-color: #f0f0f0;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, 0%)
+}
+
+#jugador {
+    position: absolute;
+    width: 48px;
+    height: 48px;
+    background-color: #c4c7c6;
+    border: 2px solid black;
+    bottom: 490px;
+    left: 950px; 
+}
+
+#teletransportador {
+    position: absolute;
+    width: 50px;
+    height: 20px;
+    background-color: yellow;
+    bottom: 530px;
+    left: 195px;
+}
+
+#obstacle {
+    position: absolute;
+    width: 20px;
+    height: 450px;
+    background-color: red;
+    bottom: 100px;
+    left: 900px;
+}
+
+#obstacle2 {
+    position: absolute;
+    width: 200px;
+    height: 200px;
+    background-color: red;
+    bottom: 0px;
+    left: 250px;
+}
+
+#obstacle2::after {
+    content: "Maquina del tiempo";
+    position: absolute;
+    bottom: 150px; 
+    left: 50%; 
+    transform: translateX(-50%);
+    color: white; 
+    font-size: 16px; 
+    font-family:'Times New Roman', Times, serif; 
+    white-space: nowrap; 
+}
+
+#npc {
+    position: absolute;
+    width: 50px;
+    height: 50px;
+    background-color: cyan;
+    bottom: 0px; /* Adjust position as needed */
+    left: 550px; /* Adjust position as needed */
+}
