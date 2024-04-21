@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Actividad Eje Español</title>
+    <link rel="stylesheet" href="levels/final.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div id="game-container">
+        <div id="spawn"></div>
+        <div id="hint"></div>
+        <div id="hint2"></div>
+        <div id="hint3"></div>
+        <div id="hint4"></div>
+        <div id="hint5"></div>
+        <div id="jugador"></div>
+        <div class="obstacle" id="obstacle"></div>
+        <div class="obstacle" id="obstacle2"></div>
+        <div class="obstacle" id="obstacle3"></div>
+        <div class="obstacle" id="obstacle4"></div>
+        <div class="obstacle" id="obstacle5"></div>
+        <div class="obstacle" id="obstacle6"></div>
+        <div class="obstacle" id="obstacle7"></div>
+        <div class="obstacle" id="obstacle8"></div>
+        <div class="obstacle" id="obstacle9"></div>
+        <div class="obstacle" id="ceilling"></div>
+        <div class="teletransportador" id="teletransportador"></div>
+        <div class="npc" id="npc"></div>
+    </div>
+    <script src="script.js"></script>
+    <script>
+        var msgID = 0;
+        var msgIDUsed = 0;
+        var interaccion = 0;
+
+        function showDialogue() {
+            const message = getMessage();
+            if (message) {
+                const dialogueBox = createDialogueBox(message);
+                document.body.appendChild(dialogueBox);
+            }
+        }
+
+        function getMessage() {
+            if (msgID === 1) {
+                return "Hablar con Iker";
+            } else if (msgID === 2) {
+                return "Iker: Haber niño mal parido";
+            } else if (msgID === 3) {
+                return "Iker: ¿Tú te haces aquí?";
+            } else if (msgID === 4) {
+                return "Iker: ¡Cállate! Yo hago las preguntas aquí";
+            } else if (msgID === 5) {
+                return "Chuck (en una radio): ¡¿Qué haces Iker?!";
+            } else if (msgID === 6) {
+                return "Iker: ¡Tú tambien cállate!";
+            } else if (msgID === 7) {
+                return "Chuck (en una radio): ¡Adventurero, hagas lo que hagas, no le hagas caso a Iker!";
+            } else if (msgID === 8) {
+                return "Iker: ¡Como siempre manipulando a las masas!";
+            } else if (msgID === 9) {
+                return "Iker: ¡Ni siquiera te sabes su nombre!";
+            } else if (msgID === 10) {
+                return "Iker: ¡Sinvergüenza!";
+            } else if (msgID === 11) {
+                return "Iker: Adventurero, te tienes que robar la maquina";
+            } else if (msgID === 12) {
+                return "Chuck (en una radio): ¡Ni se te ocurra hacer eso Adventurero!";
+            } else if (msgID === 13) {
+                return "Iker: Chuck, eres horrible, te quise matar por no dejarme ser la persona que quise ser";
+            } else if (msgID === 14) {
+                return "Iker: ¡Solo quise cambiar mi pasado! ¡Y TU ME LO IMPEDISTE!";
+            } else if (msgID === 15) {
+                return "Iker: ¿Quién te ocupa Chuck? ¡Ahora haremos lo que se nos plazca!";
+            } else if (msgID === 16) {
+                return "Iker: Chuck, te quiero hacer sufrir";
+            } else if (msgID === 17) {
+                return "Iker: Chuck, te quiero hacer llorar";
+            } else if (msgID === 18) {
+                return "Chuck (en una radio): ¡Adventurero, no me traiciones!";
+            } else if (msgID === 19) {
+                return "Iker: ¡Qué te calles Chuck!";
+            } else if (msgID === 20) {
+                return "Tú: Chuck...";
+            } else if (msgID === 21) {
+                return "Tú: Lo siento";
+            } else if (msgID === 22) {
+                return "Chuck: ¡NO!";
+            } else if (msgID === 23) {
+                return "Iker: ¡SI!";
+            } else if (msgID === 24) {
+                return "Iker: ¡A SER FELICES PARA SIEMPRE!";
+            } else if (msgID === 30) {
+                return "Tú: Iker...";
+            } else if (msgID === 31) {
+                return "Chuck: ¡NO!";
+            } else if (msgID === 32) {
+                return "Iker: ¡SI!";
+            } else if (msgID === 33) {
+                return "Tú: ¡Ahí te ves pringado!";
+            } else if (msgID === 34) {
+                return "Iker: ¡¿QUÉ?!";
+            } else if (msgID === 35) {
+                return "Chuck: ¡SI!";
+            } else if (msgID === 36) {
+                return "Iker: ¡NOOOOOOOOOOOOOOOOOOO!";
+            }
+
+            cerrar();
+            return null;
+        }
+
+        function createDialogueBox(message) {
+            const dialogueBox = document.createElement('div');
+            dialogueBox.classList.add('dialogue-box');
+            let buttonsHTML = `
+                <p>${message}</p>
+                <button class=".siguiente-button" onclick="incrementMsgID()">Hablar</button>
+            `;
+
+            dialogueBox.innerHTML = buttonsHTML;
+            return dialogueBox;
+        }
+
+        function updateDialogueBox() {
+            const dialogueBox = document.querySelector('.dialogue-box');
+            if (dialogueBox) {
+                const messageElement = dialogueBox.querySelector('p');
+                messageElement.textContent = getMessage(); 
+
+                const buttons = dialogueBox.querySelectorAll('button');
+                buttons.forEach(button => button.remove());
+
+                if (msgID === 3) {
+                    dialogueBox.innerHTML += `
+                        <button class="boton-3" onclick="incrementMsgID()">¿Qué pasó aquí, y por qué tan agresivo?</button>
+                    `;
+                } else if (msgID === 19) {
+                    dialogueBox.innerHTML += `
+                        <button class="boton-3" onclick="incrementMsgID()">Traicionar a Chuck</button>
+                        <button class="boton-4" onclick="fmsgIDUsed(30)">Abandonar a Iker</button>
+                    `;
+                } else if (msgID === 24) {
+                    dialogueBox.innerHTML += `
+                        <button class="boton-3" onclick="finTraidor()">Fin</button>
+                    `;
+                } else if (msgID === 36) {
+                    dialogueBox.innerHTML += `
+                        <button class="boton-3" onclick="finBueno()">Fin</button>
+                    `;
+                } else {
+                    dialogueBox.innerHTML += `
+                        <button class="siguiente-button" onclick="incrementMsgID()">Siguiente</button>
+                    `;
+                }
+            }
+        }
+
+        function setMsgID(newMsgID) {
+            msgID = newMsgID;
+            updateDialogueBox();
+        }
+
+        function fmsgIDUsed(IDUsed) {
+            if (msgIDUsed === 0) {
+                setMsgID(IDUsed);
+                msgIDUsed = 0;
+            }
+            else {
+                incrementMsgID();
+            }
+        }
+
+        function incrementMsgID() {
+            msgID++; 
+            updateDialogueBox();
+        }
+
+
+        function cerrar() {
+            const dialogueBox = document.querySelector('.dialogue-box');
+            if (dialogueBox) {
+                dialogueBox.remove();
+            }
+        }
+
+        function finTraidor() {
+            window.location.href = 'finales/final_traidor.html';
+        }
+
+        function finBueno() {
+            window.location.href = 'finales/final_bueno.html';
+        }
+
+        function handleTeletransportadorCollision() {
+            window.location.href = 'medium3.html';
+        }
+    </script>
+</body>
+</html>

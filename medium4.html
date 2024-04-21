@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Actividad Eje Español</title>
+    <link rel="stylesheet" href="levels/medium4.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div id="game-container">
+        <div id="spawn"></div>
+        <div id="jugador"></div>
+        <div id="hint"></div>
+        <div class="obstacle" id="obstacle"></div>
+        <div class="obstacle" id="obstacle2"></div>
+        <div class="obstacle" id="obstacle3"></div>
+        <div class="obstacle" id="obstacle4"></div>
+        <div class="obstacle" id="obstacle5"></div>
+        <div class="obstacle" id="obstacle6"></div>
+        <div class="obstacle" id="obstacle7"></div>
+        <div class="obstacle" id="obstacle8"></div>
+        <div class="obstacle" id="obstacle9"></div>
+        <div class="obstacle" id="obstacle10"></div>
+        <div class="obstacle" id="obstacle11"></div>
+        <div class="obstacle" id="obstacle12"></div>
+        <div class="obstacle" id="obstacle13"></div>
+        <div class="obstacle" id="obstacle14"></div>
+        <div class="obstacle" id="obstacle15"></div>
+        <div class="obstacle" id="obstacle16"></div>
+        <div class="obstacle" id="obstacle17"></div>
+        <div class="obstacle" id="ceilling"></div>
+        <div class="teletransportador" id="teletransportador"></div>
+        <div class="npc" id="npc"></div>
+    </div>
+    <script src="script.js"></script>
+    <script>
+    document.addEventListener("DOMContentLoaded", function() {
+        var altura = -1000;
+        document.getElementById("obstacle17").style.bottom = altura + "px";
+    });
+
+    var resuelto = 0;
+    var msgID = 0;
+    var msgIDUsed = 0;
+    var interaccion = 0;
+
+    function showDialogue() {
+        const message = getMessage();
+        if (message) {
+            const dialogueBox = createDialogueBox(message);
+            document.body.appendChild(dialogueBox);
+        }
+    }
+
+    function getMessage() {
+        if (resuelto === 0){
+            if (msgID === 1) {
+                return "Hablar con ???";
+            } else if (msgID === 2) {
+                return "???: Eeeh... Hola...";
+            } else if (msgID === 100) {
+                return "???: Si, si, todo... bien...";
+            } else if (msgID === 200) {
+                return "???: No, no, no, no tengo nada";
+            } else if (msgID === 3) {
+                return "???: Es que llego aquí tres dias";
+            } else if (msgID === 4) {
+                return "???: Tengo el control para abrir la puerta";
+            } else if (msgID === 5) {
+                return "???: ¡Solo que no funciona!";
+            } else if (msgID === 6) {
+                return "???: Si, si, por favor, ayudame";
+            } else if (msgID === 7) {
+                return "???: Solo tienes que decirme a que botón picarle.";
+            } else if (msgID === 8) {
+                return "???: ¡Wow, eso funcionó!";
+            } else if (msgID === 9) {
+                return "???: ¡Muchas gracias!";
+            } else if (msgID === 10) {
+                return "???: ¡Wow, eso funciono!";
+            } else if (msgID === 11) {
+                return "Iker: Ah si, soy Iker, perdón por no decirte antes";
+            } else if (msgID === 12) {
+                return "Iker: En serio, muchas gracias. ";
+            } else if (msgID === 20) {
+                return "???: Hmm... Eso no funcionó. ";
+            }
+            cerrar();
+            return null;
+        } else if (resuelto === 1) {
+            if (msgID === 1) {
+                return "Hablar con Iker";
+            } else if (msgID === 2) {
+                return "Iker: ¡Hola! ¡Ahora puedes prender y apagar el obstaculo!";
+            } else if (msgID === 3) {
+                return "Iker: ¡Muchas garcias por salvarme!";
+            }
+        } else {
+            return null;
+        }
+    }
+
+    function createDialogueBox(message) {
+        const dialogueBox = document.createElement('div');
+        dialogueBox.classList.add('dialogue-box');
+        let buttonsHTML = `
+            <p>${message}</p>
+            <button class=".siguiente-button" onclick="incrementMsgID()">Hablar</button>
+        `;
+
+        dialogueBox.innerHTML = buttonsHTML;
+        return dialogueBox;
+    }
+
+    function updateDialogueBox() {
+        const dialogueBox = document.querySelector('.dialogue-box');
+        if (dialogueBox) {
+            const messageElement = dialogueBox.querySelector('p');
+            messageElement.textContent = getMessage(); 
+
+            const buttons = dialogueBox.querySelectorAll('button');
+            buttons.forEach(button => button.remove());
+
+            
+            if (resuelto === 0){
+                if (msgID === 2) {
+                    dialogueBox.innerHTML += `
+                        <button class="boton-1" onclick="fmsgIDUsed(100)">¿Todo bien?</button>
+                        <button class="boton-2" onclick="fmsgIDUsed(200)">Tienes algo?</button>
+                    `;
+                } else if (msgID === 5) {
+                    dialogueBox.innerHTML += `
+                        <button class="boton-1" onclick="incrementMsgID()">¿Ocupas ayuda?</button>
+                    `;
+                } else if (msgID === 7) {
+                    dialogueBox.innerHTML += `
+                        <button class="boton-1" onclick="cambiarAltura(200); incrementMsgID()">Rojo (Prender)</button>
+                        <button class="boton-1" onclick="cambiarAltura(-1000); fmsgIDUsed(20)">Verde (Apagar)</button>
+                    `;
+                } else if (msgID === 10) {
+                    dialogueBox.innerHTML += `
+                        <button class="boton-1" onclick="incrementMsgID()">No hay de que, pero ¿Quién eres?</button>
+                    `;
+                } else if (msgID === 12) {
+                    dialogueBox.innerHTML += `
+                        <button class="boton-1" onclick="incrementMsgID(); probarAltura()">¡Gracias a tí!</button>
+                    `;
+                } else if (msgID === 100) {
+                    dialogueBox.innerHTML += `
+                        <button class="boton-1" onclick="fmsgIDUsed(3)">A vale</button>
+                    `;
+                } else if (msgID === 200) {
+                    dialogueBox.innerHTML += `
+                        <button class="boton-1" onclick="fmsgIDUsed(3)">A vale</button>
+                    `;
+                } else {
+                    dialogueBox.innerHTML += `
+                        <button class="siguiente-button" onclick="incrementMsgID()">Siguiente</button>
+                    `;
+                }
+            }
+
+            if (resuelto === 1){ 
+                if (msgID === 2) {
+                    dialogueBox.innerHTML += `
+                        <button class="boton-1" onclick="cambiarAltura(200); incrementMsgID()">Rojo (Prender)</button>
+                        <button class="boton-1" onclick="cambiarAltura(-1000); incrementMsgID()">Verde (Apagar)</button>
+                    `;
+                }
+                else if (msgID === 3) {
+                    dialogueBox.innerHTML += `
+                        <button class="boton-1" onclick="cerrar()">¡No hay de que!</button>
+                    `;
+                }
+                else {
+                    dialogueBox.innerHTML += `
+                        <button class="siguiente-button" onclick="incrementMsgID()">Siguiente</button>
+                    `;
+                }
+            }
+        }
+    }
+
+    function setMsgID(newMsgID) {
+        msgID = newMsgID;
+        updateDialogueBox();
+    }
+
+    function fmsgIDUsed(IDUsed) {
+        if (msgIDUsed === 0) {
+            setMsgID(IDUsed);
+            msgIDUsed == 0;
+        }
+        else {
+            incrementMsgID();
+        }
+    }
+
+    function incrementMsgID() {
+        msgID++; 
+        updateDialogueBox();
+    }
+
+    function cerrar() {
+        const dialogueBox = document.querySelector('.dialogue-box');
+        if (dialogueBox) {
+            dialogueBox.remove();
+        }
+    }
+
+    function cambiarAltura(varAltura){
+        altura = varAltura;
+        document.getElementById("obstacle17").style.bottom = altura + "px";
+    }
+
+    function probarAltura(){
+        alturaProbar = altura;
+        document.getElementById("obstacle17").style.bottom = altura + "px";
+        if (altura === 200) {
+            resuelto = 1;
+        };
+    }
+
+    function handleTeletransportadorCollision() {
+        window.location.href = 'final.html';
+    }
+    
+    </script>
+</body>
+</html>

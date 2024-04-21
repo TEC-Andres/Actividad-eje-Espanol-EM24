@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Actividad Eje Español</title>
+    <link rel="stylesheet" href="levels/inicio.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div id="game-container">
+        <div id="jugador"></div>
+        <svg version="1.2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 200" width="300" height="200"><defs><image  width="300" height="200" id="img1" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAASwAAADIAQMAAABoEU4WAAAAAXNSR0IB2cksfwAAAANQTFRFgICAkHQ9MQAAADFJREFUeJztyjEBAAAMAqDZv/QKeBgAbnKTaJqmaZqmaZqmaZqmaZqmaZqmaZqmaVrzFUgAyWPrh2AAAAAASUVORK5CYII="/><image  width="265" height="79" id="img2" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAQkAAABPCAMAAADPwMCTAAAAAXNSR0IB2cksfwAAAv1QTFRFAAAA39/f39/f3t7e3t7e4ODg39/f4+Pj39/f4eHh3t7e39/f39/f4eHh3t7e4ODg3t7e39/f39/f39/f4ODg39/f39/f3t7e39/f4ODg39/f5OTk3t7e39/f5+fn3t7e39/f39/f3t7e////39/f39/f39/f39/f4eHh3t7e39/f5ubm4eHh////6Ojo5OTk39/f3t7e4ODg4uLi3t7e6+vr////39/f4eHh4eHh4ODg39/f29vb39/f4ODg4eHh////39/f4ODg39/f4ODg4ODg3t7e3t7e39/f3t7e39/f3t7e4uLi39/f39/f39/f////3t7e39/f39/f39/f39/f39/f39/f3t7e4+Pj39/f4ODg39/f3t7e39/f7e3t39/f39/f3t7e39/f3t7e////4ODg39/f5ubm3d3d39/f39/f3t7e39/f3t7e3t7e3t7e39/f39/f4eHh4ODg39/f4ODg4ODg3t7e3t7e3t7e3t7e39/f3t7e39/f39/f39/f3t7e4ODg39/f3t7e3t7e4ODg3t7e3t7e4ODg39/f4uLi3t7e39/f39/f39/f6urq39/f39/f39/f3t7e3t7e39/f3t7e3t7e39/f4uLi39/f39/f39/f3t7e3t7e3t7e3t7e4eHh4eHh3t7e3t7e3t7e3t7e3t7e4+Pj4ODg39/f4eHh3t7e4ODg4ODg39/f39/f3t7e3t7e39/f4eHh4+Pj3t7e3t7e3t7e39/f5eXl39/f3t7e3t7e39/f39/f3d3d4ODg39/f3t7e39/f39/f39/f3t7e39/f4ODg39/f4ODg4+Pj3t7e3t7e4ODg3t7e39/f4ODg4ODg39/f39/f39/f3t7e39/f39/f39/f39/f4uLi3t7e3t7e39/f3t7e3t7e39/f39/f39/f5ubm39/f3t7e4uLi3t7e39/f3t7e39/f3t7e39/f3t7e39/f39/f3t7e3t7e6Ojo4ODg4+Pj4ODg3t7e3t7e39/f39/f39/f3t7eJ1JrkAAAAP90Uk5TANz/6MKaXwmeO9rd5CrzSfIYkICCpu6iIBneE2RQFWx2Vy4BMFh3aEQ2QBQiAhYcEEZaNB8NA388ETkoB0hyQwWdUXBS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"/></defs><style>.a{fill:#afafaf}</style><use style="display:none" href="#img1" x="0" y="0"/><path class="a" d="m0 99c-0.3 49.9 78.2 103 155 101 73.1-1.9 145.1-49.8 145-100-0.1-49.8-73.1-97.2-145.8-100-77.2-3-153.9 48.9-154.2 99z"/><use  href="#img2" x="17" y="69"/></svg>        <div class="obstacle" id="obstacle"></div>
+        <div class="obstacle" id="obstacle2"></div>
+        <div class="obstacle" id="obstacle3"></div>
+        <div class="obstacle" id="ceilling"></div>
+        <div class="teletransportador" id="teletransportador"></div>
+        <div class="npc" id="npc"></div>
+    </div>
+    <style>
+        svg {
+            position: relative; 
+            top: 50px;
+            left: 350px;
+            width: 300px;
+            height: 200px; 
+        }
+    </style>
+    <script src="script.js"></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            var altura = 150;
+            document.getElementById("obstacle3").style.bottom = altura + "px";
+        });
+
+        var resuelto = 0;
+        var msgID = 0;
+        var msgIDUsed = 0;
+        var interaccion = 0;
+
+        function showDialogue() {
+            const message = getMessage();
+            if (message) {
+                const dialogueBox = createDialogueBox(message);
+                document.body.appendChild(dialogueBox);
+            }
+        }
+
+        function getMessage() {
+            if (resuelto === 0) {
+                if (msgID === 1) {
+                    return "Hablar con ???";
+                } else if (msgID === 2) {
+                    return "???: ¡Hola!";
+                } else if (msgID === 3) {
+                    return "Chuck: Soy Chuck...";
+                } else if (msgID === 4) {
+                    return "Chuck: Si, es que dejé mi maquina del tiempo dentro de ese hoyo...";
+                } else if (msgID === 5) {
+                    return "Chuck: Este es mi laboratorio, bueno, era...";
+                } else if (msgID === 6) {
+                    return "Chuck: Sin mi invención, este laboratorio es inutil.";
+                } else if (msgID === 7) {
+                    return "Chuck: ¿Sería mucho pedirte mandarte por mi maquina del tiempo?";
+                } else if (msgID === 8) {
+                    return "Chuck: ¡Genial! Muchas gracias";
+                } else if (msgID === 20) {
+                    return "Chuck: Esta bien, si cambias de parecer, solo hablame";
+                } else if (msgID === 101) {
+                    return "???: Exacto, este es mi laboratorio";
+                } else if (msgID === 102) {
+                    return "???: Gracias";
+                } else if (msgID === 103) {
+                    return "Chuck: Se que no me preguntaste, pero me llamo Chuck.";
+                }
+                cerrar();
+                return null;
+            } else if (resuelto === 1) { 
+                if (msgID === 1) {
+                    return "Hablar con Chuck";
+                } else if (msgID === 2) {
+                    return "Chuck: ¿Cambiaste de opinión?";
+                } else if (msgID === 3) {
+                    return "Chuck: ¡Genial! ¡Muchas gracias!";
+                } else if (msgID === 10) {
+                    return "Chuck: Esta bien, si cambias de parecer, solo hablame";
+                }
+            }
+        }
+
+        function createDialogueBox(message) {
+            const dialogueBox = document.createElement('div');
+            dialogueBox.classList.add('dialogue-box');
+            let buttonsHTML = `
+                <p>${message}</p>
+                <button class=".siguiente-button" onclick="incrementMsgID()">Hablar</button>
+            `;
+
+            dialogueBox.innerHTML = buttonsHTML;
+            return dialogueBox;
+        }
+
+        function updateDialogueBox() {
+            const dialogueBox = document.querySelector('.dialogue-box');
+            if (dialogueBox) {
+                const messageElement = dialogueBox.querySelector('p');
+                messageElement.textContent = getMessage(); 
+
+                const buttons = dialogueBox.querySelectorAll('button');
+                buttons.forEach(button => button.remove());
+
+                if (resuelto === 0) {
+                    if (msgID >= 2 && msgID <= 3) {
+                        if (msgID >= 2 && msgID <= 3) {
+                            dialogueBox.innerHTML += `
+                                <button class="boton-3" onclick="incrementMsgID()">Siguiente</button>
+                            `;
+                        }
+                        if (msgID === 2) {
+                            dialogueBox.innerHTML += `
+                                <button class="boton-1" onclick="fmsgIDUsed(101)">¿Es tu laboratorio?</button>
+                                <button class="boton-2" onclick="cerrar()">Cerrar</button>
+                            `;
+                        }
+                    } else if (msgID === 7) {
+                        dialogueBox.innerHTML += `
+                            <button class="boton-3" onclick="incrementMsgID(); cambiarAltura(-1000)">¡Si! Yo por ella.</button>
+                            <button class="boton-4" onclick="fmsgIDUsed(20)">Gracias, pero no quiero</button>
+                        `;
+                    } else if (msgID === 8) {
+                        dialogueBox.innerHTML += `
+                            <button class="boton-3" onclick="incrementMsgID(); probarAltura(-1000)">No hay de que.</button>
+                        `;
+                    } else if (msgID === 20) {
+                        dialogueBox.innerHTML += `
+                            <button class="boton-3" onclick="incrementMsgID(); probarAltura(150)">No hay de que.</button>
+                        `;
+                    } else if (msgID === 101) {
+                        dialogueBox.innerHTML += `
+                            <button class="boton-3" onclick="incrementMsgID()">¡Esta bonito!</button>
+                        `;
+                    } else if (msgID === 103) {
+                        dialogueBox.innerHTML += `
+                            <button class="boton-3" onclick="fmsgIDUsed(5)">Siguiente</button>
+                        `;
+                    } else {
+                        dialogueBox.innerHTML += `
+                            <button class="siguiente-button" onclick="incrementMsgID()">Siguiente</button>
+                        `;
+                    }
+                } else if (resuelto === 1) { 
+                    if (msgID === 2) {
+                        dialogueBox.innerHTML += `
+                            <button class="boton-1" onclick="cambiarAltura(-1000); incrementMsgID()">¡Si! Deja te echo una mano</button>
+                            <button class="boton-1" onclick="fmsgIDUsed(10)">No, no te quiero ayudar.</button>
+                        `;
+                    } else if (msgID === 3) {
+                        dialogueBox.innerHTML += `
+                            <button class="boton-1" onclick="cerrar()">¡No hay de que!</button>
+                        `;
+                    } else if (msgID === 10) {
+                        dialogueBox.innerHTML += `
+                            <button class="boton-1" onclick="cerrar()">¡No hay de que!</button>
+                        `;
+                    } else {
+                        dialogueBox.innerHTML += `
+                            <button class="siguiente-button" onclick="incrementMsgID()">Siguiente</button>
+                        `;
+                    }
+                }
+            }
+        }
+
+
+        function setMsgID(newMsgID) {
+            msgID = newMsgID;
+            updateDialogueBox();
+        }
+
+        function fmsgIDUsed(IDUsed) {
+            if (msgIDUsed === 0) {
+                setMsgID(IDUsed);
+                msgIDUsed = 0;
+            }
+            else {
+                incrementMsgID();
+            }
+        }
+
+        function incrementMsgID() {
+            msgID++; 
+            updateDialogueBox();
+        }
+
+        function cerrar() {
+            const dialogueBox = document.querySelector('.dialogue-box');
+            if (dialogueBox) {
+                dialogueBox.remove();
+            }
+        }
+
+        function cambiarAltura(varAltura){
+            altura = varAltura;
+            document.getElementById("obstacle3").style.bottom = altura + "px";
+        }
+
+        function probarAltura(vAltura) {
+            alturaProbar = vAltura;
+            document.getElementById("obstacle3").style.bottom = vAltura + "px";
+            if (alturaProbar === vAltura) {
+                resuelto = 1;
+            }
+        }
+
+        function handleTeletransportadorCollision() {
+            window.location.href = 'medium1.html';
+        }
+    </script>
+</body>
+</html>

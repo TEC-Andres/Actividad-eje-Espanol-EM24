@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Actividad Eje Español</title>
+    <link rel="stylesheet" href="levels/medium3.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div id="game-container">
+        <div id="spawn"></div>
+        <div id="jugador"></div>
+        <div class="obstacle" id="obstacle"></div>
+        <div class="obstacle" id="obstacle2"></div>
+        <div class="obstacle" id="obstacle3"></div>
+        <div class="obstacle" id="obstacle4"></div>
+        <div class="obstacle" id="obstacle5"></div>
+        <div class="obstacle" id="obstacle6"></div>
+        <div class="obstacle" id="obstacle7"></div>
+        <div class="obstacle" id="obstacle8"></div>
+        <div class="obstacle" id="obstacle9"></div>
+        <div class="obstacle" id="ceilling"></div>
+        <div class="teletransportador" id="teletransportador"></div>
+        <div class="npc" id="npc"></div>
+    </div>
+    <script src="script.js"></script>
+    <script>
+        var msgID = 0;
+        var msgIDUsed = 0;
+        var interaccion = 0;
+
+        function showDialogue() {
+            const message = getMessage();
+            if (message) {
+                const dialogueBox = createDialogueBox(message);
+                document.body.appendChild(dialogueBox);
+            }
+        }
+
+        function getMessage() {
+            if (msgID === 1) {
+                return "Hablar con Godot";
+            } else if (msgID === 2) {
+                return "Godot: Bonjour!";
+            } else if (msgID === 3) {
+                return "Godot: Je m'appelle Godot";
+            } else if (msgID === 4) {
+                return "Godot: Ah, espera, idioma equivocado";
+            } else if (msgID === 5) {
+                return "Godot: Hola, otra vez";
+            } else if (msgID === 6) {
+                return "Godot: ¿Sabias qué estoy haciendo esperar a unos buenos para nada en medio de la nada?";
+            } else if (msgID === 7) {
+                return "Godot: Es divertido hacerlos esperar para nada";
+            } else if (msgID === 8) {
+                return "Godot: No se como pensarón que eran lo suficiente importantes para hablar con alguien de sangre azul";
+            }
+            cerrar();
+            return null;
+        }
+
+        function createDialogueBox(message) {
+            const dialogueBox = document.createElement('div');
+            dialogueBox.classList.add('dialogue-box');
+            let buttonsHTML = `
+                <p>${message}</p>
+                <button class=".siguiente-button" onclick="incrementMsgID()">Hablar</button>
+            `;
+
+            dialogueBox.innerHTML = buttonsHTML;
+            return dialogueBox;
+        }
+
+        function updateDialogueBox() {
+            const dialogueBox = document.querySelector('.dialogue-box');
+            if (dialogueBox) {
+                const messageElement = dialogueBox.querySelector('p');
+                messageElement.textContent = getMessage(); 
+
+                const buttons = dialogueBox.querySelectorAll('button');
+                buttons.forEach(button => button.remove());
+                
+                if (msgID === 2) {
+                    dialogueBox.innerHTML += `
+                        <button class="boton-3" onclick="incrementMsgID()">Bonjour?</button>
+                    `;
+                } else if (msgID === 3) {
+                    dialogueBox.innerHTML += `
+                        <button class="boton-3" onclick="incrementMsgID()">???</button>
+                    `;
+                } else if (msgID === 4) {
+                    dialogueBox.innerHTML += `
+                        <button class="boton-3" onclick="incrementMsgID()">Ah, vale</button>
+                    `;
+                } else if (msgID === 5) {
+                    dialogueBox.innerHTML += `
+                        <button class="boton-3" onclick="incrementMsgID()">¡Hola!</button>
+                    `;
+                } else if (msgID === 6) {
+                    dialogueBox.innerHTML += `
+                        <button class="boton-3" onclick="incrementMsgID()">¿Okay?</button>
+                    `;
+                } else if (msgID === 7) {
+                    dialogueBox.innerHTML += `
+                        <button class="boton-3" onclick="incrementMsgID()">...</button>
+                    `;
+                } else if (msgID === 8) {
+                    dialogueBox.innerHTML += `
+                        <button class="boton-3" onclick="incrementMsgID()">*Te retiras de manera desapercibida*</button>
+                    `;
+                } else {
+                    dialogueBox.innerHTML += `
+                        <button class="siguiente-button" onclick="incrementMsgID()">Siguiente</button>
+                    `;
+                }
+            }
+        }
+
+        function setMsgID(newMsgID) {
+            msgID = newMsgID;
+            updateDialogueBox();
+        }
+
+        function fmsgIDUsed(IDUsed) {
+            if (msgIDUsed === 0) {
+                setMsgID(IDUsed);
+                msgIDUsed = 1;
+            }
+            else {
+                incrementMsgID();
+            }
+        }
+
+        function incrementMsgID() {
+            msgID++; 
+            updateDialogueBox();
+        }
+
+
+        function cerrar() {
+            const dialogueBox = document.querySelector('.dialogue-box');
+            if (dialogueBox) {
+                dialogueBox.remove();
+            }
+        }
+
+        function handleTeletransportadorCollision() {
+            window.location.href = 'medium4.html';
+        }
+    </script>
+</body>
+</html>
